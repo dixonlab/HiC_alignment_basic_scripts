@@ -22,11 +22,17 @@ In this case, you are giving the script one fastq file (either read1 or read2, c
 To run the two_read_bam_combiner.pl perl script, run the following command:
 ./two_read_bam_combiner.pl --file1 read1_bam_file --file2 read2_bam_file
 This script has a few other parameters you can invoke depending on what you want your output file to contain. They are as follows:
+
 --qual N    //This will only keep reads that align with a mapping quality greater than or equal to N
+
 --single    //This will retain single reads as well. In other words, in the event that one read aligns with qual>=N and its pair does not, this will keep the read as a single stranded read in the bam file. The frequency of such reads can increase near unmappable regions such as the centromere or telomere, so it may be a good idea to keep them for bias/normalization purposes. Also, if using Hi-C for phasing these can occaisonally still provide useful information if the read contains two heterozygous SNPs.
+
 --bed_file <bed file> //If you provide a bed file, the script will only keep reads that align within this bed file
+
 --paired_bed <6 column bed-like file> //If provided, will filter any reads that align between the two regions. One of the only reasons I have ever used this is if there is concern about interactions between highly similar regions like segmental duplications
+
 --frag_file <bed file of restriction enzyme fragments> //If provided, will add a tag in the bed file containing the restriction enzyme fragment. Useful in the event you want to know if analyzing fragment level data
+
 --chr_file <list of chromosomes> //If provided, will only consider chromosomes in this file as mapped. Perhaps useful if you want to filter out reads aligning to unplaced contigs. 
 
 
