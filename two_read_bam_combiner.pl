@@ -396,6 +396,7 @@ sub id_test {
     $id2 =~ s/\/[12]$//g;
 
     if ($id1 ne $id2) {
+    	print STDERR $id1 . "\t" . $id2 . "\n";
 	die ("The IDs don't match up\n");
     } else {
 	return($id1,$id2);
