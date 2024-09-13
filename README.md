@@ -1,6 +1,6 @@
 These are some scripts that we use in the lab for Hi-C alignment. 
 
-There are three scripts. One is a shell scripts that just runs the other two in a single pipeline (hic_align_pipeline.sh)
+There are three scripts for alignment. One is a shell scripts that just runs the other two in a single pipeline (hic_align_pipeline.sh)
 
 One of the two perl scripts will align a single fastq file to the reference genome using BWA mem and perform some simple post-processing of the alignment (bwa_mem_hic_aligner.pl)
 The other will take two bam files (one for read1, one for read 2), and manually merge them into a single bam file with paired information retained for each read (two_read_bam_combiner.pl).
@@ -40,4 +40,5 @@ Notes on why we use this scripts (as opposed to other bwa based alignment method
 The short answer is that it is historical, we have been using these scripts or versions of them for a while.
 One particular reason to use this for the hic_breakfinder tool is filtering out of poorly mapped reads. This can make a difference in terms of Hi-C based SV calls. Poorly mapped reads are not inherently filtered out by using "bwa mem -SP5M", but can be with other post-processing scripts.
 
+There are two additional scripts for generating a contacts file from the bam files, and then for also merging contact files (i.e. from replicate experiments).
 
